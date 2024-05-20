@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<settings>
+    <servers>
+        <server>
+            <id>releases</id>
+            <username>tech58</username>
+            <password>tech58</password>
+        </server>
+        <server>
+            <id>Snapshots</id>
+            <username>tech58</username>
+            <password>tech58</password>
+        </server>
+    </servers>
+    <mirrors>
+        <mirror>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <mirrorOf>alimaven</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>default</id>
+            <name>default maven</name>
+            <url>https://repo1.maven.org/maven2</url>
+            <mirrorOf>default</mirrorOf>
+        </mirror>
+    </mirrors>
+    <profiles>
+        <profile>
+            <id>development</id>
+            <repositories>
+                <repository>
+                    <id>alimaven</id>
+                    <name>aliyun maven</name>
+                    <url>https://maven.aliyun.com/repository/central</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>default</id>
+                    <name>aliyun maven</name>
+                    <url>https://repo1.maven.org/maven2/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>alimaven-plugin</id>
+                    <name>aliyun maven</name>
+                    <url>https://maven.aliyun.com/repository/central</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>default-plugin</id>
+                    <name>def maven</name>
+                    <url>https://repo1.maven.org/maven2/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+        <profile>
+            <!--this profile will allow snapshots to be searched when activated-->
+            <id>public-snapshots</id>
+            <repositories>
+                <repository>
+                    <id>public-snapshots</id>
+                    <url>http://public-snapshots</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>public-snapshots</id>
+                    <url>http://public-snapshots</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>development</activeProfile>
+        <!-- <activeProfile>public-snapshots</activeProfile> -->
+    </activeProfiles>
+</settings>

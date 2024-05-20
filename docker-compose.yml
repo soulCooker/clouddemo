@@ -1,0 +1,29 @@
+version: '3.4'
+services:
+        cloud-client-node:
+                build: ./client
+                ports:
+                        - "8097:8097"
+                depends_on:
+                        - cloud-client-server
+                        - redis-server
+                environment:
+                        - REDIS_HOST=host.docker.internal
+                        - REDIS_PORT=6379
+                        - REDIS_PASSWORD=eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+        cloud-client-server:
+                build: ./eurakaserver
+                ports:
+                        - "8761:8761"
+        redis-server:
+                image: redis:7.2.4
+                restart: always
+                ports:
+                        - '6379:6379'
+                command: redis-server --save 60 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+                volumes:
+                        - cache:/data
+volumes:
+        cache:
+                driver: local
+
